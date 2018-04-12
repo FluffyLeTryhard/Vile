@@ -1,4 +1,13 @@
 command /machines:
     trigger:
         open chest with 1 row named "&6Machines&8:" to player
-        format slot 4 of player with hopper named "&2Vacuum Hopper &a$35000" with lore "&7Teleports items in a 6 block radius to it (MINEABLE!)" to close then run [execute console command "/minecraft:give %player% spawn_egg 1 0 {EntityTag:{id:""Bat""},display:{Name:"":crop""}}"
+        format slot 4 of player with hopper named "&2Vacuum Hopper &a$10000" with lore "&7Teleports items in a 6 block radius to it!" to close then run [execute player command "/crop"]
+        
+
+command /crop:
+    trigger:
+        if player's balance is <= 100000:
+            send "&7[&6Vile&7] Successfully bought a &eVacuum Hopper&7!"
+            execute console command "/minecraft:give %player% spawn_egg 1 0 {EntityTag:{id:""Bat""},display:{Name:"":crop""}}"
+        else:
+            send "&7[&6Vile&7] Insufficient Funds!"
